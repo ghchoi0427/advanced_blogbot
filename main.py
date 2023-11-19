@@ -7,11 +7,8 @@ from api import upload
 def run():
     current_topic = get_topic_from_file()
     essay = write_essay(current_topic)
+    upload(current_topic, essay)
 
-# for i in range(16):
-#     schedule.every().day.at(f"{i:02d}:00").do(your_method)
-
-# while True:
-#     schedule.run_pending()
-#     time.sleep(1)
-run()
+while True:
+    run()
+    time.sleep(5400)

@@ -1,9 +1,12 @@
 import requests
 from urllib.parse import urlencode
 
+with open('resources/env.txt') as env_file:
+    env_vars = dict(line.strip().split('=') for line in env_file)
+
 API_URL = "https://www.tistory.com/apis/post/write"
-ACCESS_TOKEN = "your_access_token"  # Replace with your actual access token
-BLOG_NAME = "your_blog_name"  # Replace with your actual blog name
+ACCESS_TOKEN = env_vars.get("TISTORY_ACCESS_TOKEN")
+BLOG_NAME = env_vars.get("BLOG_NAME")
 
 def upload(title, content):
     category = "1"  # category ID
@@ -25,7 +28,6 @@ def upload(title, content):
     response = requests.post(url)
     print(response.text)
 
-# Example usage
-title = "Your Title"
-content = "Your Content"
-upload(title, content)
+# title = "Your Title"
+# content = "Your Content"
+# upload(title, content)
