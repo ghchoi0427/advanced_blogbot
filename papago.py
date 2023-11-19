@@ -11,6 +11,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def translate(prompt, sk, tk):
        op = webdriver.ChromeOptions()
+       op.binary_location='/usr/bin/google-chrome-stable'
        op.add_argument(f"user-agent={UserAgent.random}")
        op.add_argument("user-data-dir=./")
        op.add_experimental_option("detach", True)
